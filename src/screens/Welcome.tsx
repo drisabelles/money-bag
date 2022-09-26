@@ -5,6 +5,8 @@ import styled from "styled-components/native";
 // custom components 
 import { colors } from "../components/colors";
 import { Container } from "../components/shared"
+import BigText from "../components/Texts/BigText";
+import SmallText from "../components/Texts/SmallText";
 
 const WelcomeContainer = styled(Container)`
   background-color: ${colors.secondary};
@@ -34,6 +36,7 @@ const BottomSection = styled.View`
 // image
 import background from "./../../assets/bgs/background_v1.png";
 
+
 const Welcome: FunctionComponent = () => {
   return (
     <>
@@ -42,7 +45,14 @@ const Welcome: FunctionComponent = () => {
         <TopSection>
           <TopImage source={background} />
         </TopSection>
-        <BottomSection></BottomSection>
+        <BottomSection>
+          <BigText textStyles={{width: "70%", marginBottom: 25 }}>
+            Best way to track your money
+          </BigText>
+          <SmallText textStyles={{width: "70%", marginBottom: 25 }}>
+            Best payment method, connects your money to your friends, family
+          </SmallText>
+        </BottomSection>
       </WelcomeContainer>
     </>
   )
