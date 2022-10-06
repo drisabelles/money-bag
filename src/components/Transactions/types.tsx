@@ -14,7 +14,7 @@ export interface TransactionSectionProps {
   data: Array<TransactionProps>;
 }
 
-export interface TRasactionAviProps {
+export interface TransactionAviProps {
   icon: any;
   background: string;
 }

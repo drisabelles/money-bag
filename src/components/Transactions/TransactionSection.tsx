@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../colors";
 import RegularText from "../Texts/RegularText";
 import SmallText from "../Texts/SmallText";
+import TransactionItem from "./TransactionItem";
 
 const TransactionSectionBackground = styled.View`
   width: 100%;
@@ -18,6 +19,10 @@ const TransactionRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+`
+
+const TransactionList = styled.FlatList`
   width: 100%;
 `
 
@@ -53,6 +58,7 @@ const TransactionSection: FunctionComponent<TransactionSectionProps> = (props) =
           paddingBottom: 25,
         }}
         keyExtractor={({ id }: any) => id.toString()}
+        renderItem={({ item }: any) => <TransactionItem {...item} />}
       />
     </TransactionSectionBackground>
   )
