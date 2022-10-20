@@ -1,13 +1,16 @@
-import React, { FunctionComponent } from "react";
-import styled from "styled-components/native";
-import { View } from "react-native";
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 // components
-import { ScreenWidth } from "../shared";
-import { colors } from "../colors";
-import RegularText from "../Texts/RegularText";
-import SmallText
- from "../Texts/SmallText";
+import { ScreenWidth } from '../shared'
+import { colors } from '../colors'
+import RegularText from '../Texts/RegularText'
+import SmallText from '../Texts/SmallText'
+
+// navigation
+import { useNavigation } from '@react-navigation/native'
+import { Props as HomeProps } from '../../screens/Home'
 
 const CardBackground = styled.ImageBackground`
   height: 75%;
@@ -44,35 +47,43 @@ const Logo = styled.Image`
 `
 
 // images
-import card_bg from "../../../assets/bgs/background_transparent.png"
+import card_bg from '../../../assets/bgs/background_transparent.png'
 
 // types
-import { CardProps } from "./types";
+import { CardProps } from './types'
 
-const CardItem: FunctionComponent<CardProps> = (props) => {
-  const handlePress = () => {}
+const CardItem: FunctionComponent<CardProps> = props => {
+  // configuring navigation
+  const navigation = useNavigation<HomeProps['navigation']>()
+
+  // move to balance page
+  const handlePress = () => {
+    navigation.navigate('Balance', { ...props })
+  }
 
   return (
     <CardBackground source={card_bg}>
       <CardTouchable underlayColor={colors.secondary} onPress={handlePress}>
         <TouchableView>
           <CardRow>
-            <RegularText textStyles={{ color: colors.white, top: -18, left: 25}}>
+            <RegularText
+              textStyles={{ color: colors.white, top: -18, left: 25 }}
+            >
               **** **** **** {props.accountNo.slice(6, 10)}
             </RegularText>
           </CardRow>
           <CardRow>
-            <View style={{ flex: 3}}>
-              <SmallText 
-                textStyles={{ marginBottom: 5, color: colors.graylight}}
+            <View style={{ flex: 3 }}>
+              <SmallText
+                textStyles={{ marginBottom: 5, color: colors.graylight }}
               >
-                Total balance: 
+                Total balance:
               </SmallText>
               <RegularText textStyles={{ fontSize: 19 }}>
                 ${props.balance}
               </RegularText>
             </View>
-            <Logo source={props.logo}/>
+            <Logo source={props.logo} />
           </CardRow>
         </TouchableView>
       </CardTouchable>
@@ -80,4 +91,4 @@ const CardItem: FunctionComponent<CardProps> = (props) => {
   )
 }
 
-export default CardItem;
+export default CardItem
