@@ -35,7 +35,7 @@ Aplicação mobile extra feita para enriquecimento tanto do portfólio quando da
 ```bash
 
 # Baixe este repositório ou clone pelo Git usando o comando:
-$ git clone https://github.com/drisabelles/money-bag
+$ git clone https://github.com/drisabelles/money-bag.git
 
 # Acesse a pasta do projeto
 $ cd money-bag
